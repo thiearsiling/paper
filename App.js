@@ -3,14 +3,16 @@ import {
   MD3LightTheme as DefaultTheme,
   PaperProvider,
 } from "react-native-paper";
-import Main from "./app/pages/Main";
+import Login from "./src/pages/login";
 
 export default function App() {
   const theme = { ...DefaultTheme };
 
   return (
     <PaperProvider theme={theme}>
-      <Main style={styles.main} />
+      <View style={styles.main}>
+        <Login />
+      </View>
     </PaperProvider>
   );
 }
