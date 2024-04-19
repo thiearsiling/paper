@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { View, Image } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import styles from "./styles";
 
-export default Login = () => {
+export default Login = ({ navigation }) => {
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
   const [isPasswordHide, setIsPasswordHide] = useState(true);
@@ -29,12 +29,7 @@ export default Login = () => {
 
   const buttons = (
     <View style={styles.loginButonContainer}>
-      <Button
-      // loading={isLoading}
-      // onPress={doLogin}
-      >
-        Registrar
-      </Button>
+      <Button onPress={() => navigation.navigate("Register")}>Registrar</Button>
       <Button
         mode="contained-tonal"
         disabled={!userName || !password}
@@ -46,22 +41,18 @@ export default Login = () => {
     </View>
   );
 
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
   return (
     <View style={styles.container}>
       {imageContainer}
       <View style={styles.formContainer}>
         <TextInput
-          label="username"
+          label="usuário"
           value={userName}
           onChangeText={setUserName}
           mode="outlined"
         />
         <TextInput
-          label="password"
+          label="senha"
           value={password}
           onChangeText={setPassword}
           secureTextEntry={isPasswordHide}
